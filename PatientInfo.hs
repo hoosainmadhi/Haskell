@@ -15,7 +15,7 @@ type FirstName = String
 type LastName = String
 
 type Age = Int
-
+--405871477
 type Height = Int
 
 firstName :: PatientName -> String

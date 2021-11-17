@@ -1,3 +1,5 @@
+{-# LANGUAGE FlexibleContexts #-}
+
 module Lib where
 
 addMe :: Integer -> Integer -> Integer
