@@ -34,6 +34,6 @@ show Two = "two"
 
 data Ordering =  LT | EQ | GT
 
-instance Ord SixSidedDie where
-    compare S6 S6 = EQ
-    compare S6 _ = GT
+-- instance Ord SixSidedDie where
+--     compare S6 S6 = EQ
+--     compare S6 _ = GT
