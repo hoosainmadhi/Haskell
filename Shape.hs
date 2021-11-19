@@ -11,3 +11,5 @@ data Shape = Circle {radius :: Float} | Square {side :: Float}
 area :: Shape -> Float
 area (Circle r) = pi * r ^ 2
 area (Square s) = s * s
+
+---
