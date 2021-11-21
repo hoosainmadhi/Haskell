@@ -30,6 +30,8 @@ instance Show Card where
 fullDeck :: Deck
 fullDeck = [Card x y | y <- [Clubs .. Hearts], x <- [Two .. Ace]]
 
+smallDeck :: [Card]
 smallDeck = [Card Ace Spades, Card Two Clubs, Card Jack Hearts]
 
+main :: IO ()
 main = print smallDeck >> putStrLn "Press Enter to deal the full deck" >> getLine >> mapM_ print fullDeck

@@ -68,13 +68,10 @@ names =
   ]
 
 compareLastNames :: Ord a1 => (a2, a1) -> (a3, a1) -> Ordering
-compareLastNames name1 name2 =
-  if lastName1 > lastName2
-    then GT
-    else
-      if lastName1 < lastName2
-        then LT
-        else EQ
+compareLastNames name1 name2
+  | lastName1 > lastName2 = GT
+  | lastName1 < lastName2 = LT
+  | otherwise = EQ
   where
     lastName1 = snd name1
     lastName2 = snd name2
@@ -121,14 +118,15 @@ getRequestURL host apiKey resource id =
     ++ apiKey
 
 getUrl :: p1 -> p2 -> p3 -> p4 -> [Char]
-getUrl a b c d  = "a" ++ "b" ++ "c" ++ "d"
+getUrl a b c d = "a" ++ "b" ++ "c" ++ "d"
 
-buildURL a = (\b c d -> )
-
+-- buildURL a = (\b c d -> )
 
 genHostRequestBuilder :: [Char] -> [Char] -> [Char] -> [Char] -> [Char]
 genHostRequestBuilder host = (\apiKey resource id -> getRequestURL host apiKey resource id)
 
+unit :: p -> p
+unit x = x
 
 {--
 f(x) = x^2 -2x + 5

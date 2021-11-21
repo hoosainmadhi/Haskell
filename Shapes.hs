@@ -1,5 +1,3 @@
-import Text.Html (yellow)
-
 type Point = (Int, Int)
 
 data Triangle = Triangle Point Point Point deriving (Show)
