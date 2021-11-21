@@ -26,10 +26,10 @@ instance Shape Square where
   simple = Square (0, 0) (1, 0) (1, 1) (0, 1)
   rotate (Square w x y z) = Just (Square z w x y)
   area (Square w x y z) = Nothing
-  (<^>) (Square w x y z) = Nothing
+  (<^>) (Square w x y z) = Just (Square z w x y)
 
 instance Shape Circle where
   simple = Circle (0, 0) 10
-  rotate (Circle x r) = Nothing
+  rotate (Circle x r) = Just (Circle x r)
   area (Circle x r) = Just (pi * r ^ 2)
-  (<^>) (Circle x r) = Nothing
+  (<^>) (Circle x r) = Just (Circle x r)
