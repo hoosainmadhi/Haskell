@@ -9,13 +9,16 @@ import Lib
     msg,
     removeNonUpperCase,
   )
+import Shape (Shape (Circle), area)
 
 -- functional
 -- lazy
 -- type inference
+
 main :: IO ()
 main =
   do
+    let c1 = Circle 10
     putStr "sum of x + y = "
     print (addMe 10 33)
     print (factorial 8)
@@ -28,3 +31,5 @@ main =
     putStrLn (mesg "Foo")
     putStrLn (msg "Other")
     print (abs (-100))
+    print c1
+    print (area c1)
