@@ -151,3 +151,7 @@ or
 f x = x^2 (haskell)
 
 --}
+
+-- main :: IO ()
+main :: IO ()
+main = interact $ show . sum . map read . words

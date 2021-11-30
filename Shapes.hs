@@ -28,18 +28,13 @@ instance Shape Square where
   simple = Square (0, 0) (1, 0) (1, 1) (0, 1)
   rotate (Square w x y z) = Just (Square z w x y)
   area (Square w x y z) = Nothing
-<<<<<<< HEAD
   (<^>) (Square w x y z) = Nothing
   pp (Square w x y z) = "notDef"
-=======
-  (<^>) (Square w x y z) = Just (Square z w x y)
->>>>>>> dcd6c8dce802d9943cbdfe0ed8796faefcce1420
 
 instance Shape Circle where
   simple = Circle (0, 0) 10
   rotate (Circle x r) = Just (Circle x r)
   area (Circle x r) = Just (pi * r ^ 2)
-<<<<<<< HEAD
   (<^>) (Circle x r) = Nothing
   pp (Circle x r) = "Circle " ++ show x ++ " " ++ show r ++ " pretty print"
 
@@ -48,6 +43,3 @@ class Show' a where
 
 instance Show' Triangle where
   show' (Triangle x y z) = "foo"
-=======
-  (<^>) (Circle x r) = Just (Circle x r)
->>>>>>> dcd6c8dce802d9943cbdfe0ed8796faefcce1420

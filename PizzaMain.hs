@@ -8,7 +8,7 @@ import System.IO
 -- TODO add breadsticks, soft drinks, etc.
 data Order = Order
   { customer :: Customer,
-    pizzas :: [Pizza]
+    pizzas :: [BaseProduct]
   }
   deriving (Show)
 
@@ -18,10 +18,10 @@ data Customer = Customer {name :: String} deriving (Show)
 createEmptyOrder :: Order
 createEmptyOrder = Order {customer = (Customer "no name"), pizzas = []}
 
-addPizzaToOrder :: Order -> Pizza -> Order
+addPizzaToOrder :: Order -> BaseProduct -> Order
 addPizzaToOrder orderIn pizzaIn =
   -- return a new Order that has the new pizza in it
-  Order {customer = (customer orderIn), pizzas = newPizzas}
+  Order {customer = customer orderIn, pizzas = newPizzas}
   where
     oldPizzas = pizzas orderIn -- get the pizzas from the incoming order
     newPizzas = pizzaIn : oldPizzas -- add the new pizza to the old pizzas
@@ -87,7 +87,7 @@ newCustomer = do
   line <- getLine
   return line
 
-newPizza :: Pizza
+newPizza :: BaseProduct
 newPizza = Pizza {crustSize = Medium, crustType = Thin, toppings = [Cheese]}
 
 exit :: IO ()

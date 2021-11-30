@@ -20,10 +20,6 @@ data InvoiceStatus = Issued | Paid | Cancelled
 
 type ZAR = Int
 
-<<<<<<< HEAD
-=======
-invoice :: CustomerInvoice
->>>>>>> dcd6c8dce802d9943cbdfe0ed8796faefcce1420
 invoice =
   CustomerInvoice
     { invoiceNumber = 1,
@@ -43,12 +39,8 @@ createCustomerNotification invoice =
     Paid ->
       "Successfully paid invoice #" ++ show (invoiceNumber invoice)
     Cancelled ->
-<<<<<<< HEAD
       "Invoice #" ++ show (invoiceNumber invoice) ++ " has been canceled"
 
 main :: IO ()
 main = do
   print (amountDue invoice)
-=======
-      "Invoice #" ++ show (invoiceNumber invoice) ++ " has been canceled"
->>>>>>> dcd6c8dce802d9943cbdfe0ed8796faefcce1420
