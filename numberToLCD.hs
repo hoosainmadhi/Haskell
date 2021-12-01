@@ -42,13 +42,9 @@ print l1
 print l2
 print l3
 --}
-
-
-
--- <= 0 [] else 1234 -> 1,2,3,4
-
-
 import Data.List ()
+import System.IO
+import Codec.Binary.UTF8.String (encode)
 
 --             0   1  2   3   4   5   6   7   8   9
 --  line1 = "  _       _   _       _   _  _   _   _ "  
@@ -63,6 +59,10 @@ import Data.List ()
 --  line2 "|" "|_"  "|_|"
 --  line3 "|" " _|" "|_|"
 
+-- s space | u underscore | p  pipe
+
+
+
 sss = "   "  
 sus = " _ " 
 pss = "|  " 
@@ -73,42 +73,42 @@ ssp = "  |"
 uup = "__|"
 psp = "| |"
 sp = " |"
+us = "_ "
+uss = "_  "
+sps = " | "
+line1 = [sus , sss , sus , sus , sss , sus , sus , us , sus , sus]
+line2 = [psp , ssp , sup , sup , pup , pus , pus , sp , pup , pup]
+line3 = [pup , ssp , pus , sup , ssp , sup , pup , sp , pup , sup]
 
+-- encodeDigit :: Int -> [[Char]] -> [[Char]] --  encodeDigit 1 line1 line2 line3 = [sss,ssp,ssp] 
+encodeDigit :: Int -> [String]
+encodeDigit n   
+        | n >= 0 && n <10 = [line1 !! n, line2 !!n, line3 !!n]
+        | otherwise = [] 
 
-l1 :: Int -> String 
+l1 :: Integer -> String
 l1 1 = sss
 l1 2 = sus
 l1 3 = sus
 l1 4 = sss
 l1 5 = sus
+l1 7 = us
 
-l2 :: Int -> String
-l2 1 = ssp
+l2 :: Integer -> String
+l2 1 = sps
 l2 2 = sup
 l2 3 = sup
 l2 4 = pup
 l2 5 = pus
+l2 7 = sp
 
-l3 :: Int -> String
-l3 1 = ssp
+l3 :: Integer -> String
+l3 1 = sps
 l3 2 = pus
 l3 3 = sup
 l3 4 = ssp
 l3 5 = sup
-
-displayLCD :: Int -> IO()
-displayLCD 1 = do
-    putStrLn (l1 1)
-    putStrLn (l2 1)
-    putStrLn (l3 1)
-displayLCD 2 = do
-    putStrLn (l1 2)
-    putStrLn (l2 2)
-    putStrLn (l3 2)
-
-
-
-
+l3 7 = sp
 
 digits :: Integral x => x -> [x]
 digits 0 = []
@@ -116,23 +116,25 @@ digits x = digits (x `div` 10) ++ [x `mod` 10]
 
 
 
-
--- main :: IO ()
+main :: IO ()
 main = do
        
-    -- let a = map displayLCD (digits 12)
-    -- putStr(unwords a)
-    -- let line1 =  map l1 digits 12121212121212121 --[1,2,1,2,1,2]
+--     let line1 = unwords [l1 x | x <- digits 1234775432112347754321123477543217575]
+--     let line2 = unwords [l2 x | x <- digits 1234775432112347754321123477543217575]
+--     let line3 = unwords [l3 x | x <- digits 1234775432112347754321123477543217575]
 
-    -- let b = unwords a
-    let line1 = [l1 x | x<- digits 1234554321]
-    let line2 = [l2 x | x<- digits 1234554321]
-    let line3 = [l3 x | x<- digits 1234554321]
+--     let line1' = [encodeDigit x | x <- digits 1234]
+--     let line2' = [encodeDigit x | x <- digits 1234]
+--     let line3' = [encodeDigit x | x <- digits 1234]
+
+        let list = [encodeDigit x | x <- digits 1234]
+        print ((list !! 0) !! 0)
+        
+        
     
-   
-    print (unwords line1)
-    print (unwords line2)
-    print (unwords line3)
-    
-    -- print (unwords line2)
-    -- print (unwords line3)
+--     print line2'
+--     print line3'
+
+--     print (line1' !! 0)
+--     print (line1' !! 1)
+--     print (line1' !! 2)
