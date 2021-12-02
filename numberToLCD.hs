@@ -87,28 +87,40 @@ encodeDigit n
         | otherwise = [] 
 
 l1 :: Integer -> String
+l1 0 = sus
 l1 1 = sss
 l1 2 = sus
 l1 3 = sus
 l1 4 = sss
 l1 5 = sus
+l1 6 = sus
 l1 7 = us
+l1 8 = sus
+l1 9 = sus
 
 l2 :: Integer -> String
+l2 0 = psp
 l2 1 = sps
 l2 2 = sup
 l2 3 = sup
 l2 4 = pup
 l2 5 = pus
+l2 6 = pus
 l2 7 = sp
+l2 8 = pup
+l2 9 = pup
 
 l3 :: Integer -> String
+l3 0 = pup
 l3 1 = sps
 l3 2 = pus
 l3 3 = sup
 l3 4 = ssp
 l3 5 = sup
+l3 6 = pup
 l3 7 = sp
+l3 8 = pup
+l3 9 = sup
 
 digits :: Integral x => x -> [x]
 digits 0 = []
@@ -119,22 +131,14 @@ digits x = digits (x `div` 10) ++ [x `mod` 10]
 main :: IO ()
 main = do
        
---     let line1 = unwords [l1 x | x <- digits 1234775432112347754321123477543217575]
---     let line2 = unwords [l2 x | x <- digits 1234775432112347754321123477543217575]
---     let line3 = unwords [l3 x | x <- digits 1234775432112347754321123477543217575]
+    let line1 = unwords [l1 x | x <- digits 2314675890]
+    let line2 = unwords [l2 x | x <- digits 2314675890]
+    let line3 = unwords [l3 x | x <- digits 2314675890]
 
---     let line1' = [encodeDigit x | x <- digits 1234]
---     let line2' = [encodeDigit x | x <- digits 1234]
---     let line3' = [encodeDigit x | x <- digits 1234]
+--     let list = [encodeDigit x | x <- digits 123467854321123477543]
+--     print list
 
-        let list = [encodeDigit x | x <- digits 1234]
-        print ((list !! 0) !! 0)
-        
-        
-    
---     print line2'
---     print line3'
-
---     print (line1' !! 0)
---     print (line1' !! 1)
---     print (line1' !! 2)
+    print line1
+    print line2
+    print line3      
+     
